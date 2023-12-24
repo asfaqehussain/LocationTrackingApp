@@ -69,16 +69,4 @@ The app incorporates the "react-native-maps" and "react-native-maps-directions" 
 - "react-native-maps-directions": "^1.9.0"
 - "socket.io-client": "^4.7.2"
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Issues
-
-If you encounter any issues or have suggestions for improvement, please [open an issue](https://github.com/your-username/locationtrackingapp/issues).
-
-## Contributing
-
-Feel free to contribute to the development of this app by submitting pull requests. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details on how to contribute.
-
 Happy tracking! 🌎🚀
