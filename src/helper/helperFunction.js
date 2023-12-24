@@ -26,7 +26,7 @@ export const getCurrentWatch = () =>
     new Promise((resolve, reject) => {
         Geolocation.watchPosition(
             position => {
-                console.log('position call ---', position.coords.latitude, position.coords.longitude );
+                console.log('position call ---', position.coords.latitude, position.coords.longitude);
                 const cords = {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
@@ -68,11 +68,11 @@ export const locationPermission = () => new Promise(async (resolve, reject) => {
 });
 
 const showError = (message) => {
-    console.log('showError',message);
+    console.log('showError', message);
 }
 
 const showSuccess = (message) => {
-    console.log('showSuccess',message);
+    console.log('showSuccess', message);
 }
 
 export {

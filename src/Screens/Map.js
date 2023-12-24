@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,10 +9,10 @@ import {
   Platform,
   AppState,
 } from 'react-native';
-import MapView, {Marker, AnimatedRegion} from 'react-native-maps';
+import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
 import images from '../constants/images';
 import Loader from '../components/Loader';
-import {locationPermission, getCurrentLocation} from '../helper/helperFunction';
+import { locationPermission, getCurrentLocation } from '../helper/helperFunction';
 import BackgroundTimer from 'react-native-background-timer';
 
 const screen = Dimensions.get('window');
@@ -21,7 +21,7 @@ const LATITUDE_DELTA = 0.04;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 let usersData = [];
 
-const Map = ({navigation, route}) => {
+const Map = ({ navigation, route }) => {
   const SocketClient = require('../SocketClient');
 
   const mapRef = useRef();
@@ -143,8 +143,8 @@ const Map = ({navigation, route}) => {
     heading: 0,
   });
 
-  const {curLoc, isLoading, coordinate, heading} = state;
-  const updateState = data => setState(state => ({...state, ...data}));
+  const { curLoc, isLoading, coordinate, heading } = state;
+  const updateState = data => setState(state => ({ ...state, ...data }));
 
   useEffect(() => {
     getLiveLocation();
@@ -155,13 +155,13 @@ const Map = ({navigation, route}) => {
     console.log(' locPermissionDenied----', locPermissionDenied);
 
     if (locPermissionDenied) {
-      const {latitude, longitude, heading} = await getCurrentLocation();
+      const { latitude, longitude, heading } = await getCurrentLocation();
       console.log('call the live location --- >>', latitude, longitude);
       callTrigger(latitude, longitude, heading);
       animate(latitude, longitude);
       updateState({
         heading: heading,
-        curLoc: {latitude, longitude},
+        curLoc: { latitude, longitude },
         coordinate: new AnimatedRegion({
           latitude: latitude,
           longitude: longitude,
@@ -180,7 +180,7 @@ const Map = ({navigation, route}) => {
   }, []);
 
   const animate = (latitude, longitude) => {
-    const newCoordinate = {latitude, longitude};
+    const newCoordinate = { latitude, longitude };
     if (Platform.OS == 'android') {
       if (markerRef.current) {
         markerRef.current.animateMarkerToCoordinate(newCoordinate, 7000);
@@ -211,10 +211,10 @@ const Map = ({navigation, route}) => {
           }}>
           <Image
             source={images.logo}
-            style={{height: 30, width: 250, resizeMode: 'contain'}}
+            style={{ height: 30, width: 250, resizeMode: 'contain' }}
           />
         </View>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <MapView
             ref={mapRef}
             style={StyleSheet.absoluteFill}
@@ -229,7 +229,7 @@ const Map = ({navigation, route}) => {
                 style={{
                   width: 40,
                   height: 40,
-                  transform: [{rotate: `${heading}deg`}],
+                  transform: [{ rotate: `${heading}deg` }],
                 }}
                 resizeMode="contain"
               />
@@ -238,10 +238,10 @@ const Map = ({navigation, route}) => {
             {usersData.map((user, index) => (
               <Marker
                 key={index}
-                coordinate={{latitude: user.lat, longitude: user.long}}>
+                coordinate={{ latitude: user.lat, longitude: user.long }}>
                 <Image
                   source={images.secondaryMarker}
-                  style={{height: 60, width: 60, resizeMode: 'contain'}}
+                  style={{ height: 60, width: 60, resizeMode: 'contain' }}
                 />
               </Marker>
             ))}
@@ -259,14 +259,14 @@ const Map = ({navigation, route}) => {
 
         <Loader isLoading={isLoading} />
         <View style={styles.bottomView}>
-          <Text style={{fontWeight: 'bold', fontSize: 18, color: '#000'}}>
+          <Text style={{ fontWeight: 'bold', fontSize: 18, color: '#000' }}>
             CurrentLocation: {curLoc.latitude} / {curLoc.longitude}
           </Text>
 
           <TouchableOpacity
             style={styles.unbindButton}
             onPress={disconnectSocket}>
-            <Text style={{color: '#fff', fontWeight: 'bold'}}>Unbind</Text>
+            <Text style={{ color: '#fff', fontWeight: 'bold' }}>Unbind</Text>
           </TouchableOpacity>
         </View>
       </>

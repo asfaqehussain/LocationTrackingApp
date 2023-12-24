@@ -7,7 +7,7 @@ import {
   Image,
   Linking,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import images from '../constants/images';
 
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
   const navigation = useNavigation();
 
   return (
-    <View style={{flex: 1, backgroundColor: '#d4d4d4'}}>
+    <View style={{ flex: 1, backgroundColor: '#d4d4d4' }}>
       <Image
         source={images.logo}
         style={{
@@ -33,7 +33,7 @@ function Home() {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text style={{color: '#000'}}>Enter the User ID</Text>
+        <Text style={{ color: '#000' }}>Enter the User ID</Text>
         <TextInput
           style={{
             height: 40,
@@ -58,20 +58,20 @@ function Home() {
             justifyContent: 'center',
             borderRadius: 25,
           }}
-          onPress={() => navigation.navigate('Map', {user_id: text})}>
-          <Text style={{color: '#fff', fontWeight: 'bold'}}>Next</Text>
+          onPress={() => navigation.navigate('Map', { user_id: text })}>
+          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Next</Text>
         </TouchableOpacity>
 
-        <Text style={{color: '#000', marginTop: 25, textAlign: 'center'}}>
+        <Text style={{ color: '#000', marginTop: 25, textAlign: 'center' }}>
           Please note: Allow the location permission to 'Always' from app
           settings for background. To enable that
           <Text
             onPress={() => Linking.openSettings()}
-            style={{color: '#000', fontWeight: 'bold'}}>
+            style={{ color: '#000', fontWeight: 'bold' }}>
             {' '}
             Click here
           </Text>
-          <Text onPress={() => Linking.openSettings()} style={{color: '#000'}}>
+          <Text onPress={() => Linking.openSettings()} style={{ color: '#000' }}>
             {' '}
             and disable the battery saver.
           </Text>

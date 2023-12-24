@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Modal, ActivityIndicator} from 'react-native';
+import { View, Modal, ActivityIndicator } from 'react-native';
 
-const Loader = ({isLoading = false}) => {
+const Loader = ({ isLoading = false }) => {
   if (isLoading) {
     return (
       <Modal transparent visible={isLoading}>
